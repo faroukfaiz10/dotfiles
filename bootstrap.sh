@@ -20,7 +20,8 @@ EOF
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-sed -i 's/plugins=(git)//' ~/.zshrc
+sed -i 's\plugins=(git)\\' ~/.zshrc
+sed -i 's\source $ZSH/oh-my-zsh.sh\\' ~/.zshrc # Needs to come after plugins
 cat << EOF >> ~/.zshrc
 
 # Plugins list
@@ -29,6 +30,8 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+
+source $ZSH/oh-my-zsh.sh
 EOF
 
 # fzf
